@@ -8,3 +8,5 @@ class Add:
         self.lhs = lhs
         self.rhs = rhs
         self.result = result
+        self.op_name = "arith.addf"
+

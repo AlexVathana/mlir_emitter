@@ -12,7 +12,7 @@ def emit_mlir(tensors, operation):
     lines.append(f"    scf.for %i = %c0 to %c{size} step %c1 {{")
     lines.append(f"      %a = memref.load %A[%i] : memref<{size}x{dtype}>")
     lines.append(f"      %b = memref.load %B[%i] : memref<{size}x{dtype}>")
-    lines.append(f"      %r = arith.addf %a, %b : {dtype}")
+    lines.append(f"      %r = {operation.op_name} %a, %b : {dtype}")
     lines.append(f"      memref.store %r, %C[%i] : memref<{size}x{dtype}>")
     lines.append(f"    }}")
     lines.append(f"    return")
